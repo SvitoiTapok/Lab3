@@ -30,13 +30,9 @@ let empty () =
         Sections = Array.empty
     }
 
-let newPoint point interFunc =
-    let lastPoint = interFunc.Sections.[interFunc.Sections.Length - 1].LastPoint
-    addSection lastPoint point interFunc
-
 let interpolatePoint x interFunc =
-    let rec loop i seg =
-        if i < 0 then seg
+    let rec loop i sec =
+        if i < 0 then sec
         else
             if interFunc.Sections.[i].LastPoint.X <= x then
                 interFunc.Sections.[i]
